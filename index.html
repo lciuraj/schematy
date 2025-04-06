@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Sprawdź numer schematu</title>
+</head>
+<body style="font-family: Arial, sans-serif; text-align: center; margin-top: 50px;">
+    <h1>Sprawdź numer schematu bazy danych</h1>
+    <div id="loginSection">
+    <p>Podaj hasło dostępu:</p>
+    <input type="password" id="passwordInput" placeholder="Hasło">
+    <button onclick="checkPassword()">Zaloguj</button>
+</div>
+
+<div id="protectedSection" style="display: none;">
+    <p>Wpisz numer indeksu:</p>
+    <input type="text" id="indexInput" placeholder="Numer indeksu">
+    <button onclick="checkSchema()">Sprawdź</button>
+    <h2 id="result"></h2>
+</div>
+    <script>
+        (function() {
+            const e = 'eyI0v9RNTI2MiI6IjQ1MSIsIjQ0OTkzIjoiNDUyIiwiqxLNDQ5OTQiOiI0NTMiLCI0NDk5NyI6IjQ1NCIsIjQ0OTk4IjoiNDU1IiwiNDQ5OTkiOiI0NTYiLCIZn30NTAwMyI6IjQ1NyIsIjQ1MDA0IjoiNDU4IiwiNDUwMDYiOiI0NTkiLCI0NTAwNyI6IjQ2MCIsIjQ1MDA5IjoiNDYxIiwiNDUwMTAiOiI0NjIiLCI0NTAxMyI6IjQ2MyIsIjQ1MDE0IjoiNDY0IiwiNDUwMTUiOiI0NjUiLCI0NTAxNyI6IjQ2NiIsIjQ1MDIxIjoiNDY3IiwiNDUwMjIiOiI0NjgiLCI0NTAyMyI6IjQ2OSIsIjQ1MDE4IjoiNDcwIiwiNDUwMTkiOiI0NzEiLCI0NTAyMCI6IjQ3MiIsIjQ1MDI1IjoiNDczIiwiNDUwMjYiOiI0NzQiLCI0OTA4NSI6IjQ3NSIsIjQ0OTE1IjoiNDApTyxIiwiNDQ5MzgiOiI0MDIiLCI0NDk2OCI6IjQwMyIsIjQ2Nzg5IjoiNDA0IiwiNDQ5NjkiOiI0MDUiLCI0NDk3MCIv9R6IjQwNiIsIjQ0OTczIjoiNDA3IiwiNDQ5NzQiOiI0MDgiLCI0Njc5NSI6IjQwOSIsIjQ1ODkxIjoiNDEwIiwiNDQ5NzUiOiI0MTEiLCI0qxLNDk3NiI6IjQxMiIsIjQ1OTQyIjoiNDEzIiwiMzk1ODMiOiI0MTQiLCI0NDk4MCI6IjQxNSIZn3sIjQ0OTgxIjoiNDE2IiwiNDQwMjEiOiI0MTciLCI0NDk4NSI6IjQxOCIsIjQ2NzI5IjoiNDE5IiwiNDQ5ODciOiI0MjAiLCI0NDk4OCI6IjQyMSIsIjQ0OTg5IjoiNDIyIiwiNDU5NTciOiI0MjMiLCI0NDk5MCI6IjQyNCIsIjQ0OTkxIjoiNDI1IiwiNDUwMTYiOiI0MjYiLCI0NDkwNiI6IjM1MSIsIjQ0OTI1IjoiMzUyIiwiNDQ5MzIiOiIzNTMiLCI0NDkzNiI6IjM1NCIsIjQ2MTAzIjv9RoiMzU1IiwiNDQ5MzciOiIzNTYiLCI0NDkzOSI6IjM1NyIsIjQ0OTQzIjoiMzU4IiwiNDQ5NDUiOiIzNTkiLCI0NDk0NiI6IjM2MCIsIjQ0OTQqxL3IjoiMzYxIiwiNDQ5NTAiOiIzNjIiLCI0NDk1MSI6IjM2MyIsIjQ0OTUzIjoiMzY0IiwiNDQ5NTqxLIiOiIzNjUiLCIZn30NDk1NCI6IjM2NiIsIjQ0OTU1IjoiMzY3IiwiNDYwMTkiOiIzNjgiLCI0NDk1NiI6IjM2OSIsIjQ0OTU3IjoiMzcwIiwiNDQ5NTkiOiIzNzEiLCI0NDv9Rk2MyI6IjM3MiIsIjM3NTMzIjoiMzczIiwiNDQ5NjQiOiIzNzQiLCI0NDk2NiI6IjM3NSIsIjQ0OTY3IjoiMzcqxL2IiwiNDQ5ODYiOiIzNzcifQ=='
+            const chars = ['x', 'm', 'q', 'a', 'v', 't', 'b', 'o', 'k', 'z'];
+            const decoder = window[chars[3] + chars[5] + chars[7] + chars[6]];
+
+            const s = ['qxL', 'v9R', 'pTy', 'Zn3', 'mYq'];
+            const c = e.replace(new RegExp(s.join('|'), 'g'), '');
+            const reversed = c.split('').reverse().join('');
+            const d = JSON.parse(decoder(reversed.split('').reverse().join('')));
+            window['checkSchema'] = function() {
+                const indexNumber = document.getElementById('indexInput').value.trim();
+                const resultElement = document.getElementById('result');
+                const result = d[indexNumber];
+                if (result) {
+                    resultElement.textContent = `Twój numer schematu: ${result}`;
+                    resultElement.style.color = 'green';
+                } else {
+                    resultElement.textContent = 'Nie znaleziono schematu dla tego numeru indeksu.';
+                    resultElement.style.color = 'red';
+                }
+            }
+        })();
+        (async function() {
+    const correctHash = 'a9cceeb54a44bce07570168f268afddb7b95cb27680598eb54f7fdb1bfcf47f8';
+
+    async function hashInput(input) {
+        const encoder = new TextEncoder();
+        const data = encoder.encode(input);
+        const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    async function checkPassword() {
+        const password = document.getElementById('passwordInput').value.trim();
+        const hashedPassword = await hashInput(password);
+        if (hashedPassword === correctHash) {
+            document.getElementById('protectedSection').style.display = 'block';
+            document.getElementById('loginSection').style.display = 'none';
+        } else {
+            alert('Nieprawidłowe hasło');
+        }
+    }
+
+    window.checkPassword = checkPassword;
+})();
+    </script>
+</body>
+</html>
